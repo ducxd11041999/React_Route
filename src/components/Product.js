@@ -27,7 +27,7 @@ class Product extends Component {
   	}
   	] 
   	var {match}	= this.props;
-  	console.log(match)
+  	//console.log(match)
   	var rs = products.map((product, index) =>{
   		return (
   			<Link to = {`${match.url}/${product.slug}`} key={index}>
@@ -37,6 +37,8 @@ class Product extends Component {
   			</Link>
   			)
   	})
+    var {location} = this.props;
+    console.log(location)
     return (
       <div className = 'container'>
   	  	<div className="row">
@@ -46,7 +48,7 @@ class Product extends Component {
   	  	</div>
   	  	<div className="row">
           <Router>
-  	  		   <Route path = "/product/:slug" component = {ProductItem} />
+  	  		   <Route path = "/product/:slug" exact = {false}component = {ProductItem} />
           </Router>
   	  	</div>
       </div>

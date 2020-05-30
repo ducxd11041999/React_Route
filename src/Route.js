@@ -3,9 +3,9 @@ import About from './components/About'
 import Contact from './components/Contact'
 import Notfound from './components/NotFound'
 import Product from './components/Product'
-
+import ProductItem from './components/ProductItem.js'
 import React from 'react';
-
+import Login from './components/Login'
 const routes = [{
 	path : '/',
 	exact: true,
@@ -31,9 +31,23 @@ const routes = [{
 {
 	path : '/product',
 	exact: true,
-	main: ({match}) =>{
-		return <Product match={match} />
+	main: (match, location) =>{
+		return <Product match={match}  location = {location}/>
 	}
+},
+{
+	path: '/product/:slug',
+	exact : false,
+	main: (match) =>{
+		return <ProductItem match = {match}/>
+		}
+},
+{
+	path: '/login',
+	exact : false,
+	main: (currentLocation) =>{
+		return <Login currentLocation = {currentLocation}/>
+		}
 },
 {
 	path : '',
@@ -41,7 +55,8 @@ const routes = [{
 	main: () =>{
 		return <Notfound />
 	}
-}
+},
+
 ] 
 
 
